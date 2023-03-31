@@ -1,4 +1,7 @@
 # graphdb_cia_factbook
+
+![My Image](img/summary_table.png)
+
 ## Description
 Takes publicly available data from the CIA factbook (https://www.cia.gov/the-world-factbook/countries/) and downloads key tables into CSV's.  Those CSV's are than uploaded to Neo4j.  Where a graphDB Page Rank and Article Rank are computed.  CSV summary and raw tables will be exported to the output folder.
 
@@ -10,6 +13,19 @@ Takes publicly available data from the CIA factbook (https://www.cia.gov/the-wor
 3) Run: preprocess_upload_neo4j.py
     - If Neo4j is not located at the default location, ("localhost:7687"), rename the "url" variable.
     - Manually enter user name and password
+
+## GraphDB
+The data can be explored in the graph DB to gain further insights.
+
+![My Image](img/exports.svg)
+### Top 50 countries by PageRank and which country they export the most to.
+
+
+
+![My Image](img/imports.svg)
+### Top 50 countries by PageRank and which country they import the most from.
+
+
 
 ## Known issues 
 * The amount of trade each country has is taken from a percentage of the total imports times the total imports for a given country.  These maybe done for different years depending upon the data.  The latest year is assumed.  And if conflicting data appears the highest trade route is assumed.  This results in some countries having more trade than the total trade for a given year.  Because it is a combination of many years.
