@@ -1,0 +1,485 @@
+goods,mapped_good
+aircraft,aerospace
+aircraft machinery,aerospace
+aircraft parts,aerospace
+agricultural products,agricultural products
+animal meal,agricultural products
+apples,food & beverage products
+bananas,food & beverage products
+beans,food & beverage products
+canned fruit,food & beverage products
+cashews,food & beverage products
+cheese,food & beverage products
+chickpeas,food & beverage products
+chocolate,food & beverage products
+citrus,food & beverage products
+coconut oil,food & beverage products
+coconut products,food & beverage products
+concentrated milk,food & beverage products
+corn,food & beverage products
+dairy products,food & beverage products
+dates,food & beverage products
+dried legumes,food & beverage products
+eddoes and dasheen (taro),food & beverage products
+eggplant,food & beverage products
+fishmeal,agricultural products
+forage crops,food & beverage products
+fresh fruits,food & beverage products
+fruit,food & beverage products
+fruit juice,food & beverage products
+fruits,food & beverage products
+fruits and nuts,food & beverage products
+grapes,food & beverage products
+ground nut oil,food & beverage products
+ground nuts,food & beverage products
+gum arabic,agricultural products
+Kentia palm seeds,food & beverage products
+legumes,food & beverage products
+mangoes,food & beverage products
+milk,food & beverage products
+nuts,food & beverage products
+olive oil,food & beverage products
+olives,food & beverage products
+oranges,food & beverage products
+other vegetables,food & beverage products
+palm oil,food & beverage products
+pears,food & beverage products
+pesticides,agricultural products
+pistachios,food & beverage products
+pitted fruits,food & beverage products
+rapeseed,food & beverage products
+raw sugar,food & beverage products
+rice,food & beverage products
+sesame seeds,food & beverage products
+soybean meal,food & beverage products
+soybean oil,food & beverage products
+soybean oil and soy products,food & beverage products
+soybean products,food & beverage products
+soybeans,food & beverage products
+soybeans and soybean products,food & beverage products
+squash,food & beverage products
+strawberries,food & beverage products
+sugar,food & beverage products
+sunflower oil,food & beverage products
+sunflower seed oil,food & beverage products
+sunflower seed oils,food & beverage products
+sunflower seeds,food & beverage products
+tomatoes,food & beverage products
+tropical fruits,food & beverage products
+various beans,food & beverage products
+various fruits and nuts,food & beverage products
+various vegetables,food & beverage products
+vegetable oils/residues,food & beverage products
+vegetable products,food & beverage products
+vegetables,food & beverage products
+walnuts,food & beverage products
+wheat,food & beverage products
+wheat flours,food & beverage products
+wheat products,food & beverage products
+fertilizers,agricultural products
+alcoholic beverages,alcoholic beverages and tobacco
+beer,alcoholic beverages and tobacco
+beverages and tobacco,alcoholic beverages and tobacco
+cigarettes,alcoholic beverages and tobacco
+cigars,alcoholic beverages and tobacco
+liquors,alcoholic beverages and tobacco
+malt extract,alcoholic beverages and tobacco
+rolled tobacco,alcoholic beverages and tobacco
+rum,alcoholic beverages and tobacco
+rums and other hard liquor,alcoholic beverages and tobacco
+tobacco,alcoholic beverages and tobacco
+tobacco products,alcoholic beverages and tobacco
+whiskey and other hard liquors,alcoholic beverages and tobacco
+wine,alcoholic beverages and tobacco
+aluminum,aluminum and aluminum products
+aluminum and aluminum products,aluminum and aluminum products
+aluminum and plating,aluminum and aluminum products
+aluminum ores,aluminum and aluminum products
+aluminum oxide,aluminum and aluminum products
+aluminum plating,aluminum and aluminum products
+bauxite,aluminum and aluminum products
+raw aluminum,aluminum and aluminum products
+scrap aluminum,aluminum and aluminum products
+buses,automotive and automotive products
+cars,automotive and automotive products
+cars and vehicle parts,automotive and automotive products
+construction vehicles,automotive and automotive products
+delivery trucks,automotive and automotive products
+engine parts,automotive and automotive products
+gas turbine parts,automotive and automotive products
+gas turbines,automotive and automotive products
+motor vehicles,automotive and automotive products
+motorcycles,automotive and automotive products
+parts for motor vehicles,automotive and automotive products
+tires,automotive and automotive products
+tractors,automotive and automotive products
+trucks,automotive and automotive products
+trunks/cases,automotive and automotive products
+used tires,automotive and automotive products
+vehicle parts,automotive and automotive products
+vehicles,automotive and automotive products
+clocks/watches,clothing products
+clothing,clothing products
+clothing and apparel,clothing products
+clothing products,clothing products
+footwear,clothing products
+footwear parts,clothing products
+knitwear,clothing products
+leather apparel,clothing products
+leather footwear,clothing products
+leather footwear and parts,clothing products
+leather shoes,clothing products
+precious metal watches,clothing products
+second-hand clothing,clothing products
+watch components,clothing products
+watches,clothing products
+coal,coal and tar oil
+coal tar oil,coal and tar oil
+carbon/graphite electronics,computers and electronics
+computers,computers and electronics
+connectors for audio and video,computers and electronics
+electric batteries,computers and electronics
+electric filament,computers and electronics
+electric generators,computers and electronics
+electrical capacitors,computers and electronics
+electrical control boards,computers and electronics
+electrical equipment,computers and electronics
+electrical lighting/signaling equipment,computers and electronics
+electrical parts,computers and electronics
+electrical power accessories,computers and electronics
+electrical transformers,computers and electronics
+electronic equipment,computers and electronics
+insulated wire,computers and electronics
+insulated wiring,computers and electronics
+integrated circuits,computers and electronics
+light industrial and electrical goods,computers and electronics
+liquid crystal displays,computers and electronics
+low-voltage protection equipment,computers and electronics
+photo equipment,computers and electronics
+photography equipment,computers and electronics
+semiconductors,computers and electronics
+telephones,computers and electronics
+video displays,computers and electronics
+cement,concrete and construction materials
+concrete blocks,concrete and construction materials
+construction materials,concrete and construction materials
+limestone,concrete and construction materials
+sand,concrete and construction materials
+copper,copper and copper products
+copper ore,copper and copper products
+scrap copper,copper and copper products
+boat propellers,"drilling platforms, ships, and ship supplies"
+drilling platforms and ships,"drilling platforms, ships, and ship supplies"
+fishing ships,"drilling platforms, ships, and ship supplies"
+netting,"drilling platforms, ships, and ship supplies"
+other ships,"drilling platforms, ships, and ship supplies"
+recreational boats,"drilling platforms, ships, and ship supplies"
+scrap vessels,"drilling platforms, ships, and ship supplies"
+sea vessels,"drilling platforms, ships, and ship supplies"
+ships,"drilling platforms, ships, and ship supplies"
+special purpose ships,"drilling platforms, ships, and ship supplies"
+special use vessels,"drilling platforms, ships, and ship supplies"
+tanker ships,"drilling platforms, ships, and ship supplies"
+tug boats,"drilling platforms, ships, and ship supplies"
+shotguns,firearms
+flavored water,food & beverage products
+food,food & beverage products
+food preparation,food & beverage products
+food preparation materials,food & beverage products
+food preparation products,food & beverage products
+food preparations,food & beverage products
+foodstuffs,food & beverage products
+pasta,food & beverage products
+prepared foodstuffs,food & beverage products
+soft drink concentrates,food & beverage products
+soups/broths,food & beverage products
+tea,food & beverage products
+arrowroot starch,food & beverage products
+beauty products,health and beauty
+essential oils,health and beauty
+fake hair,health and beauty
+perfumes,health and beauty
+collector's items,household goods
+general wares,household goods
+air conditioners,household goods
+appliances,household goods
+audio equipment,household goods
+antiques,household goods
+children's toys and stuffed animals,household goods
+furniture,household goods
+goods for household consumption,household goods
+handwoven carpets,household goods
+house linens,household goods
+kitchen machinery,household goods
+paintings,household goods
+personal appliances,household goods
+refrigerators,household goods
+scented mixtures,household goods
+shaving products,household goods
+soap,household goods
+toilet paper,household goods
+carpets,household goods
+harvesting machinery,industrial and agricultural machinery
+industrial machinery,industrial and agricultural machinery
+industrial printers,industrial and agricultural machinery
+industrial washing/bottling machinery,industrial and agricultural machinery
+iron,iron and steel products
+iron alloys,iron and steel products
+iron and iron products,iron and steel products
+iron and steel,iron and steel products
+iron fasteners,iron and steel products
+iron ore,iron and steel products
+iron piping,iron and steel products
+iron products,iron and steel products
+iron sheeting,iron and steel products
+iron structures,iron and steel products
+refined iron,iron and steel products
+scrap iron,iron and steel products
+stainless steel,iron and steel products
+steel products,iron and steel products
+diamonds,jewelry and valuable stones
+cultured pearls,jewelry and valuable stones
+gemstones,jewelry and valuable stones
+jewelry,jewelry and valuable stones
+pearls,jewelry and valuable stones
+precious gemstones,jewelry and valuable stones
+precious stones,jewelry and valuable stones
+lead,lead
+beef,livestock and livestock products
+beef products,livestock and livestock products
+cattle,livestock and livestock products
+chicken products,livestock and livestock products
+dairy cattle,livestock and livestock products
+frozen meat,livestock and livestock products
+goat meat,livestock and livestock products
+goats,livestock and livestock products
+lamb,livestock and livestock products
+livestock,livestock and livestock products
+meat,livestock and livestock products
+mutton,livestock and livestock products
+pork,livestock and livestock products
+poultry meat,livestock and livestock products
+poultry meats,livestock and livestock products
+sheep,livestock and livestock products
+sheep/goat meats,livestock and livestock products
+various meats,livestock and livestock products
+various animals,livestock and livestock products
+insect resins,lumber and lumber products
+lumber,lumber and lumber products
+paper and wood pulp products,lumber and lumber products
+sulfate wood pulp,lumber and lumber products
+timber,lumber and lumber products
+veneer sheeting,lumber and lumber products
+wood,lumber and lumber products
+wood charcoal,lumber and lumber products
+wood pulp,lumber and lumber products
+wood pulp and paper products,lumber and lumber products
+wood pulp products,lumber and lumber products
+broadcasting equipment,machinery and equipment
+cranes,machinery and equipment
+electric motor parts,machinery and equipment
+electric motors,machinery and equipment
+equipment,machinery and equipment
+hydraulic engines,machinery and equipment
+air pumps,machinery and equipment
+liquid pumps,machinery and equipment
+machinery,machinery and equipment
+machinery and equipment,machinery and equipment
+machinery and parts,machinery and equipment
+machinery and transport equipment,machinery and equipment
+mining and processed metal products,machinery and equipment
+raw materials and semi-manufactures,machinery and equipment
+raw materials for canneries,machinery and equipment
+small industry manufactures,machinery and equipment
+small specialty machinery,machinery and equipment
+spark-ignition engines,machinery and equipment
+stone processing machinery,machinery and equipment
+stone processing machines,machinery and equipment
+transformers,machinery and equipment
+valves,machinery and equipment
+woodworking machinery,machinery and equipment
+excavation machinery,machinery and equipment
+manufactures,manufacturers
+bandages,medical supplies
+dental products,medical supplies
+hormones,medical supplies
+ammonia,misc chemicals
+activated carbon,misc chemicals
+antimony,misc chemicals
+calcium phosphates,misc chemicals
+carbonates,misc chemicals
+chemicals,misc chemicals
+chlorides,misc chemicals
+copra,misc chemicals
+dolomite,misc chemicals
+ethylene polymers,misc chemicals
+industrial alcohols,misc chemicals
+industrial chemical liquids,misc chemicals
+industrial fatty acids/oils,misc chemicals
+mineral fuels,misc chemicals
+minerals,misc chemicals
+nitrogen compounds,misc chemicals
+phosphoric acid,misc chemicals
+polyethylene,misc chemicals
+polymers,misc chemicals
+silicon carbides,misc chemicals
+styrene polymers,misc chemicals
+sulfates,misc chemicals
+sulfur compounds,misc chemicals
+sulfuric acid,misc chemicals
+support catalysts,misc chemicals
+carnations,misc flowers and plants
+cut flowers,misc flowers and plants
+flowers,misc flowers and plants
+flowers and ferns,misc flowers and plants
+Norfolk Island pine seeds,misc flowers and plants
+perfume plants,misc flowers and plants
+sorghum,misc flowers and plants
+coins,misc goods
+consumer goods,misc goods
+ceramic and glass products,misc goods
+flexible metal tubing,misc goods
+hardware,misc goods
+instructional models,misc goods
+manufactured goods,misc goods
+postage stamps,misc goods
+paints,misc goods
+seating,misc goods
+seats,misc goods
+raw materials,misc metals and materials
+chromium,misc metals and materials
+cobalt,misc metals and materials
+manganese,misc metals and materials
+metal goods,misc metals and materials
+metal-clad products,misc metals and materials
+metals,misc metals and materials
+molybdenum,misc metals and materials
+raw earth metal ores,misc metals and materials
+scrap metal,misc metals and materials
+scrap metals,misc metals and materials
+tungsten,misc metals and materials
+zinc,misc metals and materials
+tin,misc metals and materials
+titanium,misc metals and materials
+coral and shells,seafood and ocean products
+coral/shells,seafood and ocean products
+soapstone,misc stone
+transport equipment,misc transportation
+shipping containers,misc transportation
+opium,narcotics
+nickel,nikel
+nickel products,nikel
+office machinery,office supplies
+office machinery and parts,office supplies
+office machinery/parts,office supplies
+paper products,office supplies
+crude oil,oil and petroleum products
+crude petroleum,oil and petroleum products
+fuel,oil and petroleum products
+fuels,oil and petroleum products
+fuels and crude oil,oil and petroleum products
+gasoline,oil and petroleum products
+industrial hydrocarbon products,oil and petroleum products
+industrial hydrocarbons,oil and petroleum products
+natural gas,oil and petroleum products
+oil,oil and petroleum products
+petroleum,oil and petroleum products
+petroleum coke,oil and petroleum products
+petroleum products,oil and petroleum products
+refined petroleum,oil and petroleum products
+plastic building materials,plastic and plastic products
+plastic lids,plastic and plastic products
+plastic products,plastic and plastic products
+plastics,plastic and plastic products
+electricity,power
+energy products,power
+gold,precious metals
+gold and other minerals,precious metals
+platinum,precious metals
+polyacetals,precious metals
+precious metal ores,precious metals
+precious metal scraps,precious metals
+precious metals,precious metals
+precious/semi-precious metal scraps,precious metals
+precious/semi-precious metals,precious metals
+silver,precious metals
+prefabricated buildings,prefabricated buildings
+radioactive chemicals,radioactive chemicals
+uranium,radioactive chemicals
+communion wafers,religious goods
+rubber,rubber and rubber products
+rubber piping,rubber and rubber products
+rubber products,rubber and rubber products
+centrifuges,scientific and medical supplies
+chemical analysis instruments,scientific and medical supplies
+laboratory ceramics,scientific and medical supplies
+laboratory diagnostic equipment,scientific and medical supplies
+laboratory glassware,scientific and medical supplies
+measurement devices/appliances,scientific and medical supplies
+measuring instruments,scientific and medical supplies
+medical cultures/vaccines,scientific and medical supplies
+medical instruments,scientific and medical supplies
+medical supplies,scientific and medical supplies
+medical vaccines/cultures,scientific and medical supplies
+modeling instruments,scientific and medical supplies
+optical products,scientific and medical supplies
+orthopedic and medical appliances,scientific and medical supplies
+orthopedic appliances,scientific and medical supplies
+oscilloscopes,scientific and medical supplies
+packaged medical supplies,scientific and medical supplies
+packaged medicines,scientific and medical supplies
+pharmaceuticals,scientific and medical supplies
+pharmaceuticals and other chemicals,scientific and medical supplies
+re-exports of pharmaceuticals,scientific and medical supplies
+surgical instruments,scientific and medical supplies
+thermostats,scientific and medical supplies
+vacuum flask,scientific and medical supplies
+x-ray equipment,scientific and medical supplies
+canned tuna,seafood and ocean products
+crustaceans,seafood and ocean products
+eels,seafood and ocean products
+fish,seafood and ocean products
+fish and fish produces,seafood and ocean products
+fish and fish products,seafood and ocean products
+fish and fish products (97%),seafood and ocean products
+fish fillets,seafood and ocean products
+fish oil,seafood and ocean products
+fish products,seafood and ocean products
+frozen fish,seafood and ocean products
+herring,seafood and ocean products
+lobster,seafood and ocean products
+mollusks,seafood and ocean products
+mother-of-pearl,seafood and ocean products
+processed and frozen fish,seafood and ocean products
+processed crustaceans,seafood and ocean products
+processed fish,seafood and ocean products
+processed shellfish,seafood and ocean products
+shark meat,seafood and ocean products
+salt,spices
+coffee,spices
+cardamom,spices
+cinnamon,spices
+cloves,spices
+cocoa beans,spices
+cocoa paste,spices
+cocoa products,spices
+cumin seeds,spices
+nutmeg,spices
+sauces/seasonings,spices
+spices,spices
+sweet peppers,spices
+vanilla,spices
+stone,concrete and construction materials
+cotton,textile
+cotton fibers,textile
+cotton yarn,textile
+fabrics,textile
+leather goods,textile
+leather products,textile
+synthetic fabrics,textile
+tanned hides,textile
+textiles,textile
+textiles and apparel,textile
+tweeds,textile
+wool,textile
+water,water
