@@ -43,10 +43,10 @@ def import_export_get(url, f_name, skip_links, country_fixes):
     soup = BeautifulSoup(r.content, 'lxml')
 
     outputs = []
-    for li in soup.findAll("li"):
+    for div in soup.findAll("div", {"class": "pb30"}):
         di_out = {}
         try:
-            link = li.find("a").get("href")
+            link = div.find("a").get("href")
         except:
             link = ""
 
@@ -54,10 +54,11 @@ def import_export_get(url, f_name, skip_links, country_fixes):
                  & (link not in skip_links))
         if process:
             di_out["link"] = link
-            di_out["country"] = li.find("a").text
-            amounts, note = exports_p_parser(str(li.find("p")))
+            di_out["country"] = div.find("a").text
+            amounts = div.get_text(strip=True, separator="\n").splitlines()[1:]
+            amounts = [a.strip() for a in amounts if a.strip() != ""]
+            amounts = [a for a in amounts if bool(re.search(r"\(\d{4}.+\)", a))]
             di_out["amount"] = amounts
-            di_out["note"] = note
             outputs.append(di_out)
 
     df = pd.DataFrame(outputs)
@@ -66,6 +67,7 @@ def import_export_get(url, f_name, skip_links, country_fixes):
     df.loc[mask, "country"] = df.loc[mask, "country"].map(country_fixes)
 
     df = df.explode("amount").reset_index(drop=True)
+    df["amount"].fillna("", inplace=True)
     df["year"] = df["amount"].apply(lambda x: x.split(" (", 1)[-1][:4])
     # some foot notes are being recorded, removing empty years
     mask = df["year"].str.contains("\d{4}", regex=True)
@@ -90,11 +92,10 @@ def partners(url, trade_type, f_name, skip_links, country_fixes):
     soup = BeautifulSoup(r.content, 'lxml')
 
     outputs = []
-    # list_items = soup.findAll("li")
-    for li in soup.findAll("li"):
+    for div in soup.findAll("div", {"class", "pb30"}):
         di_out = {}
         try:
-            link = li.find("a").get("href")
+            link = div.find("a").get("href")
         except:
             link = ""
 
@@ -102,23 +103,30 @@ def partners(url, trade_type, f_name, skip_links, country_fixes):
                  & (link not in skip_links))
         if process:
             di_out["link"] = link
-            di_out["country"] = li.find("a").text
-            # because nothing can be easy noticing some inconsistent formats
-            str_li = li.contents[1].text
-            di_out["year"] = str_li.rsplit("(", 1)[-1][:4]
-            # a bit brute force but by grabbing the first paragraph <p> we can
-            # thanremove everything after the year since we already have it.  As
-            # long as no leading lower case p we should be good
-            # Randomly Hong Kong is bolded so this doesn't work well
-            di_out["trade_country"] = [c.strip() for c in str_li.rsplit("(", 1)[0].split(",")]
+            di_out["country"] = div.find("a").text
+            # t for text
+            # sometimes a bold or other wrapper appears combining the items in the list
+            t = div.get_text(strip=True, separator="\n").splitlines()[1:]
+            t = " ".join(t)
+            # occasionally get a trailing ,
+            t = re.sub(r",\s+\(", " (", t)
+            di_out["year"] = t.rsplit("(", 1)[-1][:4]
+            di_out["trade_country"] = [c.strip() for c in t.rsplit("(", 1)[0].split(",")]
             outputs.append(di_out)
 
     df = pd.DataFrame(outputs)
     df = df.explode("trade_country").reset_index(drop=True)
-    mask = df["trade_country"] != ""
+    mask = df["trade_country"].str.contains("%")
     df.loc[mask, "percentage"] = df.loc[mask, "trade_country"].apply(
         lambda x: float(re.search("\d+%$", x)[0][:-1])/100)
-    df["trade_country"] = df["trade_country"].apply(lambda x: x.rsplit(" ", 1)[0]).str.strip()
+    df.loc[mask, "trade_country"] = df.loc[mask, "trade_country"].apply(
+        lambda x: x.rsplit(" ", 1)[0]).str.strip()
+
+    # almost entirely is used in some cases, I'll be defining that as 90%
+    mask = df["trade_country"].str.contains("almost entirely")
+    df.loc[mask, "percentage"] = 0.9
+    df.loc[mask, "trade_country"] = df.loc[mask, "trade_country"].apply(
+        lambda x: re.sub("almost entirely", "", x).strip())
 
     mask = df["country"].isin(list(country_fixes.keys()))
     df.loc[mask, "country"] = df.loc[mask, "country"].map(country_fixes)
@@ -131,7 +139,6 @@ def partners(url, trade_type, f_name, skip_links, country_fixes):
     # just because it is the CIA I will remove the exact time :P
     df["retrieved"] = df["retrieved"].dt.date
 
-
     export_file = Path("output", f_name)
     df.to_csv(export_file, index=False)
 
@@ -141,28 +148,26 @@ def region(url, f_name, skip_links, country_fixes):
     soup = BeautifulSoup(r.content, 'lxml')
 
     outputs = []
-    for li in soup.findAll("li"):
-        di_out = {}
+    for div in soup.findAll("div", {"class", "pb30"}):
         try:
-            link = li.find("a").get("href")
+            link = div.find("a").get("href")
         except:
             link = ""
 
         process = (("/the-world-factbook/countries" in link)
                  & (link not in skip_links))
         if process:
-            # A few of the countries have more than on region.
-            list_regions = []
-            # First item is always the country
-            for c in li.contents[1:]:
-                item = c.text
-                item = item.split(":", 1)[-1].strip(" ;")
-                if item not in ["", "World"]:
-                    list_regions.append(item)
+            country = div.get_text(strip=True, separator="\n").splitlines()[0]
+            # France has a few region no other countries in multiple regions
+            if country=="France":
+                list_regions = div.get_text(strip=True, separator="\n").splitlines()[1:]
+                list_regions = [r.strip(";").strip() for r in list_regions if ";" in r]
+            else:
+                list_regions = [div.get_text(strip=True, separator="\n").splitlines()[1]]
 
             df_foo = pd.DataFrame()
             df_foo["regions"] = list_regions
-            df_foo["country"] = li.find("a").text
+            df_foo["country"] = country
             df_foo["link"] = link
             df_foo["rank"] = df_foo.index
 
@@ -187,9 +192,9 @@ def trade_goods(url, trade_type, f_name, skip_links, country_fixes):
 
     outputs = []
 
-    for li in soup.findAll("li"):
+    for div in soup.findAll("div", {"class", "pb30"}):
         try:
-            link = li.find("a").get("href")
+            link = div.find("a").get("href")
         except:
             link = ""
 
@@ -197,23 +202,13 @@ def trade_goods(url, trade_type, f_name, skip_links, country_fixes):
                  & (link not in skip_links))
         if process:
 
-            list_goods = []
-            text = li.find("p").text.strip()
-            if ")" == text[-1]:
-                text, year = text.rsplit(" (", 1)
-                # because Gaza has some notes it is messing up with the data.
-                if bool(re.search("\d{4}", year)):
-                    year = re.search("\d{4}", year)[0]
-                else:
-                    year = None
-            else:
-                year = None
-
-            goods = [re.sub(r"^(and)|(including)", "",  g.strip()).strip() for g in re.split("[,;]+", text)]
+            goods = div.get_text(strip=True, separator="\n").splitlines()[1].strip()
+            year = goods.rsplit("(", 1)[-1].split(")")[0]
+            goods = [g.strip() for g in goods.rsplit("(")[0].split(",")]
 
             df_foo = pd.DataFrame()
             df_foo["goods"] = goods
-            df_foo["country"] = li.find("a").text
+            df_foo["country"] = div.find("a").text
             df_foo["link"] = link
             df_foo["year"] = year
             df_foo["rank"] = df_foo.index + 1
@@ -241,18 +236,20 @@ def population(url, f_name, skip_links, country_fixes):
 
     outputs = []
 
-    for li in soup.findAll("li"):
+    for div in soup.findAll("div", {"class", "pb30"}):
         try:
-            link = li.find("a").get("href")
+            link = div.find("a").get("href")
         except:
-            link
+            link = ""
         process = (("/the-world-factbook/countries" in link)
                  & (link not in skip_links))
 
         if process:
-            text = li.find("p").text.strip()
-            matches = re.findall(r"[\d,]+", text)
-            di = {"country": li.find("a").text}
+
+            t = div.get_text(strip=True, separator="\n").splitlines()[1:]
+            t = " ".join(t)
+            matches = re.findall(r"[\d,]+", t)
+            di = {"country": div.find("a").text}
             if len(matches) > 0:
                 # Most of the countries follow the same format but not all.
                 # Akrotiri, Dhekelia
@@ -315,16 +312,17 @@ def main():
     url_imports_commodities = "https://www.cia.gov/the-world-factbook/field/imports-commodities/"
 
     url_gdp = "https://www.cia.gov/the-world-factbook/field/gdp-official-exchange-rate/"
-    url_gdp_capita = "https://www.cia.gov/the-world-factbook/field/real-gdp-per-capita/"
     url_gdp_real = "https://www.cia.gov/the-world-factbook/field/real-gdp-purchasing-power-parity/"
     url_gdp_real_capita = "https://www.cia.gov/the-world-factbook/field/real-gdp-per-capita/"
+    # no longer in use
+    # url_gdp_capita = "https://www.cia.gov/the-world-factbook/field/gdp-per-capita/"
 
     url_population = "https://www.cia.gov/the-world-factbook/field/population"
     url_map_references = "https://www.cia.gov/the-world-factbook/field/map-references"
 
     # good type still needs to be done
     print("Exports")
-    import_export_get(url_exports,
+    import_export_get(url=url_exports,
                       f_name="exports.csv",
                       skip_links=skip_links,
                       country_fixes=di_country_name)
@@ -335,14 +333,14 @@ def main():
                 skip_links=skip_links,
                 country_fixes=di_country_name)
     print("Exports partners")
-    partners(url_exports_partners,
+    partners(url=url_exports_partners,
              trade_type="exports",
              f_name="exports_partners.csv",
              skip_links=skip_links,
              country_fixes=di_country_name)
 
     print("Imports")
-    import_export_get(url_imports,
+    import_export_get(url=url_imports,
                       f_name="imports.csv",
                       skip_links=skip_links,
                       country_fixes=di_country_name)
@@ -353,7 +351,7 @@ def main():
                 skip_links=skip_links,
                 country_fixes=di_country_name)
     print("Imports partners")
-    partners(url_imports_partners,
+    partners(url=url_imports_partners,
              trade_type="imports",
              f_name="imports_partners.csv",
              skip_links=skip_links,
@@ -364,18 +362,18 @@ def main():
                       f_name="gdp.csv",
                       skip_links=skip_links,
                       country_fixes=di_country_name)
-    print("GDP per capita")
-    import_export_get(url=url_gdp_capita,
-                      f_name="gdp_per_capita.csv",
-                      skip_links=skip_links,
-                      country_fixes=di_country_name)
+    # print("GDP per capita")
+    # import_export_get(url=url_gdp_capita,
+                      # f_name="gdp_per_capita.csv",
+                      # skip_links=skip_links,
+                      # country_fixes=di_country_name)
     print("Real GDP")
-    import_export_get(url_gdp,
+    import_export_get(url=url_gdp_real,
                       f_name="real_gdp.csv",
                       skip_links=skip_links,
                       country_fixes=di_country_name)
     print("Real GDP per capita")
-    import_export_get(url=url_gdp_capita,
+    import_export_get(url=url_gdp_real_capita,
                       f_name="real_gdp_per_capita.csv",
                       skip_links=skip_links,
                       country_fixes=di_country_name)
@@ -387,7 +385,7 @@ def main():
                skip_links=skip_links,
                country_fixes=di_country_name)
     print("Regions")
-    region(url_map_references,
+    region(url=url_map_references,
            f_name="country_region.csv",
            skip_links=skip_links,
            country_fixes=di_country_name)
