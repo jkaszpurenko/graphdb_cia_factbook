@@ -42,16 +42,16 @@ def main():
     graph = py2neo.Graph(url, auth=(username, password))
 
     # Check the existing constraints
-    current_constraints = str(graph.run("""CALL db.constraints"""))
+    current_constraints = str(graph.run("""SHOW constraints"""))
 
-    if ":country {name" not in current_constraints:
-        graph.run("""CREATE CONSTRAINT ON (n:country) ASSERT n.name IS NODE KEY""")
+    if "['country']   | ['name']" not in current_constraints:
+        graph.run("""CREATE CONSTRAINT FOR (n:country) REQUIRE n.name IS NODE KEY""")
 
-    if ":region {name" not in current_constraints:
-        graph.run("""CREATE CONSTRAINT ON (n:region) ASSERT n.name IS NODE KEY""")
+    if "['region']    | ['name']" not in current_constraints:
+        graph.run("""CREATE CONSTRAINT FOR (n:region) REQUIRE n.name IS NODE KEY""")
 
-    if ":good {name" not in current_constraints:
-        graph.run("""CREATE CONSTRAINT ON (n:good) ASSERT n.name IS NODE KEY""")
+    if "['good']      | ['name']" not in current_constraints:
+        graph.run("""CREATE CONSTRAINT FOR (n:good) REQUIRE n.name IS NODE KEY""")
 
     # deletes the existing database
     if erase_existing_neo4j:
@@ -96,15 +96,14 @@ def main():
                 "retrieved": str
                 }
     df_exp = pd.read_csv(f_exports, dtype=di_types)
-    df_exp_part = pd.read_csv(f_exports_partners, dtype=di_types)
     df_exp_good = pd.read_csv(f_exports_goods, dtype=di_types)
+    df_exp_part = pd.read_csv(f_exports_partners, dtype=di_types)
 
     df_imp = pd.read_csv(f_imports, dtype=di_types)
     df_imp_good = pd.read_csv(f_imports_goods, dtype=di_types)
     df_imp_part = pd.read_csv(f_imports_partners, dtype=di_types)
 
     df_gdp = pd.read_csv(f_gdp, dtype=di_types)
-    df_gdp_capita = pd.read_csv(f_gdp_capita, dtype=di_types)
     df_real_gdp = pd.read_csv(f_real_gdp, dtype=di_types)
     df_real_gdp_capita = pd.read_csv(f_real_gdp_capita, dtype=di_types)
 
@@ -129,7 +128,6 @@ def main():
     pairs = [(df_exp, "exports"),
              (df_imp, "imports"),
              (df_gdp, "gdp"),
-             (df_gdp_capita, "gdp_per_capital"),
              (df_real_gdp, "real_gdp"),
              (df_real_gdp_capita, "real_gdp_per_capita")
            ]
@@ -229,7 +227,6 @@ def main():
                 "retrieved",
                 "amount_gdp",
                 "year_gdp",
-                "amount_gdp_per_capital",
                 "amount_real_gdp",
                 "year_real_gdp",
                 "amount_real_gdp_per_capita",
@@ -247,7 +244,6 @@ def main():
                           year_import: {yr_import},
                           primary_region: "{region}",
                           gdp: {gdp},
-                          gdp_per_capita: {gdp_per_capita},
                           year_gdp: {yr_gdp},
                           real_gdp: {real_gdp},
                           real_gdp_per_capita: {real_gdp_capita},
@@ -266,7 +262,6 @@ def main():
                    yr_import=di["year_imports"],
                    region=di["regions"],
                    gdp=round(di["amount_gdp"] / 1000000000, 3),
-                   gdp_per_capita=di["amount_gdp_per_capital"],
                    yr_gdp=di["year_gdp"],
                    real_gdp=round(di["amount_real_gdp"] / 1000000000, 3),
                    real_gdp_capita=di["amount_real_gdp_per_capita"],
