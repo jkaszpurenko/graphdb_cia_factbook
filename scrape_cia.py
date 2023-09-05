@@ -222,6 +222,11 @@ def trade_goods(url, trade_type, f_name, skip_links, country_fixes):
 
     df["trade_type"] = trade_type
 
+    # some of the entries for year don't have the year clearly parsed
+    # will require it to be 4 digits or null
+    mask = df["year"].str.contains("^\d{4}$")
+    df.loc[~mask, "year"] = ""
+
     df["retrieved"] = datetime.datetime.now()
     # just because it is the CIA I will remove the exact time :P
     df["retrieved"] = df["retrieved"].dt.date
